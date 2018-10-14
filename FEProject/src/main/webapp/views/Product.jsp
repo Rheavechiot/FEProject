@@ -8,11 +8,11 @@
 </head>
 <body>
 
-<form action="/FEProject/welcome" method="post">
+<form action="${pageContext.request.contextPath}/welcome" method="post">
 
 Product Name: <input type="text" name="pName"/>
 Product Cost: <input type="text" name="pCost"/>
-
+Supplier ID: <input type="text" name="sId"/>
 <input type="submit" value="Product Insert"/>
 </form>
 

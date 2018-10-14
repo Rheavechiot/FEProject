@@ -9,19 +9,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import model.Product;
 import model.ProductDAO;
+import model.Supplier;
+import model.SupplierDAO;
 
 @Controller
 public class ProductController {
 
-	@RequestMapping(value="/",method=RequestMethod.GET)
+	@RequestMapping(value="/productPage",method=RequestMethod.GET)
 	public String productsPage() {
 		return "Product";
 	}
 	
 	@RequestMapping(value="/welcome", method=RequestMethod.POST)
-	public String productSuccess(@ModelAttribute("product1")Product p)
+	public String addProduct(@ModelAttribute("product1")Product p, @ModelAttribute("supplier1")Supplier s)
 	{
 		ProductDAO pd = new ProductDAO();
+		p.setSupplier(s);
 		pd.insertProduct(p);
 		return "Success";
 	}

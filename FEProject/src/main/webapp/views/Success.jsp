@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>${product1.getpName()} Inserted Successfully </h1>
-	<a href="/FEProject/listprod">Click Here to List the Products</a>
+	<h1> Inserted Successfully </h1>
+		
 </body>
 </html>
