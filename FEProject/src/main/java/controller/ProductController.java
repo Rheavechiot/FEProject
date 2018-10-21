@@ -1,5 +1,9 @@
 package controller;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,12 +25,19 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/welcome", method=RequestMethod.POST)
-	public String addProduct(@ModelAttribute("product1")Product p, @ModelAttribute("supplier1")Supplier s)
+	public String addProduct(@Valid @ModelAttribute("product1")Product p,@Valid @ModelAttribute("supplier1")Supplier s)
 	{
 		ProductDAO pd = new ProductDAO();
 		p.setSupplier(s);
-		pd.insertProduct(p);
-		return "Success";
+		boolean b = pd.insertProduct(p);
+		if(b)
+		{
+			return "Success";
+		}
+		else
+		{
+			return "Product";
+		}
 	}
 	
 	

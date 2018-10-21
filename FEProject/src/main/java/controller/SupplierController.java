@@ -1,6 +1,9 @@
 package controller;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,11 +21,18 @@ public class SupplierController {
 	}
 	
 	@RequestMapping(value="/addSupplier", method=RequestMethod.POST)
-	public String AddSupplier(@ModelAttribute("supplier1")Supplier s)
+	public String AddSupplier(@Valid @ModelAttribute("supplier1")Supplier s, BindingResult result)
 	{
 		SupplierDAO sd = new SupplierDAO();
-		sd.insertSupplier(s);
-		return "Success";
+		boolean b = sd.insertSupplier(s);
+		if(result.hasErrors())
+		{
+			return "supplier";
+		}
+		else
+		{
+			return "Success";
+		}
 	}
 	
 }
