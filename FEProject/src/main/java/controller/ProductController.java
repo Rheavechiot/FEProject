@@ -27,8 +27,12 @@ public class ProductController {
 	@RequestMapping(value="/welcome", method=RequestMethod.POST)
 	public String addProduct(@Valid @ModelAttribute("product1")Product p,@Valid @ModelAttribute("supplier1")Supplier s)
 	{
+
+		Supplier s1 = new Supplier();
 		ProductDAO pd = new ProductDAO();
-		p.setSupplier(s);
+		s1.setsId(2);
+		p.getSupplier().add(s);
+		p.getSupplier().add(s1);
 		boolean b = pd.insertProduct(p);
 		if(b)
 		{

@@ -38,7 +38,7 @@
 </head>
 <body>
 
-<table id="myTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+<table id="myTable" class="table table-striped table-bordered">
 <thead>
 <tr>
 	<th>Product Id</th>	
